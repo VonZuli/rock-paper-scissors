@@ -49,7 +49,7 @@ function getPlayerSelection() {
   return playerChoice;
 }
 
-function playGame(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
   if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "scissors" && computerSelection === "paper") ||
@@ -67,4 +67,13 @@ function playGame(playerSelection, computerSelection) {
   }
 }
 
-playGame(getPlayerSelection, getComputerChoice);
+function playGame() {
+  for (let i = 0; i < 5; i++) {
+    let playerSelection = getPlayerSelection();
+    let computerSelection = getComputerChoice();
+    let result = playRound(playerSelection, computerSelection);
+    console.log(result);
+  }
+}
+
+playGame();
