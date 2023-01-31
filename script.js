@@ -22,22 +22,16 @@ function getComputerChoice() {
 
 function getPlayerSelection() {
   let playerChoice = prompt("Select Rock, Paper or Scissors by typing below:");
-  switch (playerChoice) {
+  switch (playerChoice.trim().toLowerCase()) {
     case "rock":
-    case "Rock":
-    case "ROCK":
     case "💎":
       playerChoice = "rock";
       break;
     case "paper":
-    case "Paper":
-    case "PAPER":
     case "📃":
       playerChoice = "paper";
       break;
     case "scissors":
-    case "Scissors":
-    case "SCISSORS":
     case "✂":
       playerChoice = "scissors";
       break;
@@ -50,6 +44,25 @@ function getPlayerSelection() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  // try {
+  //   if (
+  //     (playerSelection === "rock" && computerSelection === "scissors") ||
+  //     (playerSelection === "scissors" && computerSelection === "paper") ||
+  //     (playerSelection === "paper" && computerSelection === "rock")
+  //   ) {
+  //     return `You win! ${playerSelection} beats ${computerSelection}.`;
+  //   } else if (
+  //     (playerSelection === "scissors" && computerSelection === "rock") ||
+  //     (playerSelection === "paper" && computerSelection === "scissors") ||
+  //     (playerSelection === "rock" && computerSelection === "paper")
+  //   ) {
+  //     return `You Lose! ${computerSelection} beats ${playerSelection}.`;
+  //   } else if (playerSelection === computerSelection) {
+  //     return `Draw! ${playerSelection} and ${computerSelection} were the same.`;
+  //   }
+  // } catch {
+  //   return `${playerSelection} is an invalid entry. Please enter Rock, Paper or Scissors.`;
+  // }
   if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "scissors" && computerSelection === "paper") ||
@@ -62,9 +75,11 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "rock" && computerSelection === "paper")
   ) {
     return `You Lose! ${computerSelection} beats ${playerSelection}.`;
-  } else {
+  } else if (playerSelection === computerSelection) {
     return `Draw! ${playerSelection} and ${computerSelection} were the same.`;
-  }
+  } // } else {
+  //   return `${playerSelection} is an invalid entry. Please enter Please enter Rock, Paper or Scissors.`;
+  // }
 }
 
 function playGame() {
