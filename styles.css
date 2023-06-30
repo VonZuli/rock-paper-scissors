@@ -2,3 +2,9 @@
   box-sizing: border-box;
   background-color: black;
 }
+
+.easeOut {
+  transition: all ease-out 1s;
+  border-radius: 50%;
+  border: none green 2px;
+}
