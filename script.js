@@ -77,6 +77,7 @@ function playAgain() {
   const btnRock = document.getElementById("btn0");
   const btnPaper = document.getElementById("btn1");
   const btnScissors = document.getElementById("btn2");
+  const result = document.getElementById("result");
   userTotal = 0;
   compTotal = 0;
   btnRock.style.filter = "none";
@@ -87,12 +88,15 @@ function playAgain() {
   btnScissors.disabled = false;
   userScore.textContent = 0;
   compScore.textContent = 0;
+  body.removeChild(btnReset);
+  result.textContent = "";
 }
 
 function gameOver() {
   const btnRock = document.getElementById("btn0");
   const btnPaper = document.getElementById("btn1");
   const btnScissors = document.getElementById("btn2");
+
   body.appendChild(btnReset);
   btnReset.textContent = "Play Again?";
   btnRock.style.filter = "grayscale(100%)";
@@ -205,6 +209,7 @@ function buildGame() {
   btnReset.style.maxWidth = "200px";
   btnReset.style.margin = "0 auto";
   btnReset.style.padding = "5px";
+  btnReset.id = "btnReset";
 
   body.appendChild(head1);
   body.appendChild(container);
