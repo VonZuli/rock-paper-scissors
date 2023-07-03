@@ -36,40 +36,18 @@ function getPlayerSelection(e) {
 
   const resultText = document.getElementById("msg");
 
-  function selectTransition() {
-    e.target.style.border = "10px #ff00ff solid";
-    e.target.style.transition = "all 800ms";
-  }
-  function removeTransition() {
-    e.target.classList.add("easeOut");
-    e.target.style.border = "none";
-  }
   switch (playerChoice) {
     case "btn0":
       playerChoice = "rock";
-      selectTransition();
-      setInterval(() => {
-        removeTransition();
-      }, 1000);
-
+      reset(e);
       break;
     case "btn1":
       playerChoice = "paper";
-
-      selectTransition();
-      setInterval(() => {
-        removeTransition();
-      }, 1000);
-
+      reset(e);
       break;
     case "btn2":
       playerChoice = "scissors";
-
-      selectTransition();
-      setInterval(() => {
-        removeTransition();
-      }, 1000);
-
+      reset(e);
       break;
     default:
       resultText.textContent =
@@ -79,6 +57,20 @@ function getPlayerSelection(e) {
   }
 
   return playGame(playerChoice, compChoice);
+}
+function reset(e) {
+  function selectTransition() {
+    e.target.classList.add("border");
+  }
+  function removeTransition() {
+    e.target.classList.remove("reset");
+  }
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((btn) => btn.addEventListener("transitionend", resetRound));
+  selectTransition();
+  setTimeout(() => {
+    removeTransition();
+  }, 500);
 }
 
 function playAgain() {
@@ -114,6 +106,12 @@ function checkGameStatus() {
   if (userTotal === 5 || compTotal === 5) {
     gameOver();
   }
+}
+function resetRound() {
+  this.classList.remove("border");
+  this.classList.remove("easeOut");
+
+  this.classList.add("reset");
 }
 function playRound(playerSelection, computerSelection) {
   do {

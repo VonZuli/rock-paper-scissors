@@ -3,8 +3,17 @@
   background-color: black;
 }
 
-.easeOut {
-  transition: all ease-out 1s;
-  border-radius: 50%;
-  border: none green 2px;
+.border {
+  transition: all 1000ms;
+  border: 10px solid #ff00ff;
+  border-radius: 100%;
+}
+
+.reset {
+  transition: all ease-out 500ms;
+  border-radius: 0%;
+  border: none;
+}
+
+.gameOver {
 }
